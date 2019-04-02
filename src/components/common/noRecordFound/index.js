@@ -1,0 +1,1 @@
+export {default as NoRecordFound} from './NoRecordFound';
