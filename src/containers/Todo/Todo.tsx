@@ -1,21 +1,26 @@
-import React, {Component} from 'react'
+import * as React from 'react'
 import {connect} from 'react-redux'
 import {REMOVE_TODO} from '../../redux/actions/todos'
+import Todo from '../../types/todo';
 
-const matchDispatchToProps = (dispatch, ownProps) =>{
+interface TodoDetailProps {
+    removeTodo? : (id:number)=>void,    
+    todo?: Todo
+}
+const matchDispatchToProps = (dispatch:any) =>{
     return {
-        removeTodo : (id) => dispatch(REMOVE_TODO(id))
+        removeTodo : (id:number) => dispatch(REMOVE_TODO(id))
     }
 }
 
 
-class TodoDetails extends Component{
-    constructor(props){
+class TodoDetails extends React.Component<TodoDetailProps, {}>{
+    constructor(props:TodoDetailProps){
         super(props);
         this.removeTodo = this.removeTodo.bind(this);
     }
 
-    removeTodo(id){
+    removeTodo(id:number){
         this.props.removeTodo(id);
     }
 
@@ -28,5 +33,5 @@ class TodoDetails extends Component{
 } 
 
 
-export default  connect(null, matchDispatchToProps)(TodoDetails)
+export default connect(null, matchDispatchToProps)(TodoDetails)
 

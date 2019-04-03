@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 
-export default (props)=>{
+export default ()=>{
     return (
         <footer>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="footerNav"><div className="container">

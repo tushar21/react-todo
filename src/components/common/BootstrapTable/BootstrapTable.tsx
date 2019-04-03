@@ -1,6 +1,12 @@
-import React from 'react';
+import * as React from "react"
 
-export default (props)=>{
+
+interface TableProps{
+    headerRows:Array<string>,
+    children?: any
+}
+
+export default (props:TableProps)=>{
         return (
             <table className="table">
             <thead>

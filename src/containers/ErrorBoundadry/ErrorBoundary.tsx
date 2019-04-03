@@ -1,18 +1,21 @@
-import React , {Component} from 'react';
+import * as React from 'react';
 
-export default class ErrorBoundary extends Component {
-    constructor(props) {
+interface ErrorBoundaryState{
+  hasError: boolean
+}
+
+export default class ErrorBoundary extends React.Component<{}, ErrorBoundaryState> {
+    constructor(props:any) {
       super(props);
       this.state = { hasError: false };
     }
   
-    static getDerivedStateFromError(error) {
-        console.log(error, 'error occured in error boundary')
+    static getDerivedStateFromError() {
       // Update state so the next render will show the fallback UI.
       return { hasError: true };
     }
   
-    componentDidCatch(error, info) {        
+    componentDidCatch() {        
       // You can also log the error to an error reporting service
       //logErrorToMyService(error, info);
     }

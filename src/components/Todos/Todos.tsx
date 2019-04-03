@@ -1,14 +1,20 @@
-import React from 'react'
+import * as React from "react"
 import {NoRecordFound}  from '../common/noRecordFound'
-import {Todo} from '../../containers/Todo'
+import {TodoDetails} from '../../containers/Todo'
 import {BootstrapTable} from '../common/BootstrapTable';
+import TodoType from '../../types/todo';
 
-export default (props)=>{
+interface TodoProps{
+    todos: Array<TodoType>
+}
+
+
+export default (props: TodoProps)=>{
 
     const todoList = <BootstrapTable headerRows={['ID', 'Description', 'Action']}>
         {
-            props.todos.map((todo)=>{
-                return <Todo key={todo.id} todo={todo} />
+            props.todos.map((todo: TodoType)=>{
+                return <TodoDetails key={todo.id} todo={todo} />
             })
         }
         </BootstrapTable>

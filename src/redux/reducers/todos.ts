@@ -1,7 +1,10 @@
-const intialTodos =  []
-const todos = (state=intialTodos, action) =>{
+import Todo from '../../types/todo';
+
+const intialTodos:Array<Todo> = []
+const todos = (state=intialTodos, action:any) =>{
     switch (action.type) {
         case 'ADD_TODO': 
+        console.log(action, 'In the todo reducers')
             return [
                 ...state,
                  {
@@ -11,7 +14,6 @@ const todos = (state=intialTodos, action) =>{
             ]
             
         case 'REMOVE_TODO':
-            console.log(action.id, 'action.id in remove todos')
             let newTodos = state.filter((todo)=>{
                 return todo.id != action.id 
             })

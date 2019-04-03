@@ -1,23 +1,32 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { connect } from 'react-redux'
 import {ADD_TODO} from '../../redux/actions/todos'
+import Todo from '../../types/todo'
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch:any) => {
     return {
-        addTodo : todo => {dispatch(ADD_TODO(todo))}
+        addTodo : (description:string) => {dispatch(ADD_TODO(description))}
     }
 }
 
-class AddTodo extends Component{
-    constructor(props){
+interface AddTodoState {
+    todo: Todo
+}
+
+interface AddTodoProps{
+    addTodo? : (todo:any)=> void
+}
+
+class AddTodo extends React.Component<AddTodoProps, AddTodoState>{
+    constructor(props:AddTodoProps){
         super(props)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.initialTodo = {todo: { description: ''}}
-        this.state = this.initialTodo;
+        const initialTodo  = { todo : { description: ''}  } as AddTodoState
+        this.state = initialTodo;
     }
 
-    handleChange(event){
+    handleChange(event:any){
         const target = event.target
         const name = target.name
         this.setState({
@@ -28,13 +37,11 @@ class AddTodo extends Component{
         })
     }
 
-    handleSubmit(event){
-        this.props.addTodo(this.state.todo)
-
-        console.log(this.initialTodo, 'this.initialTodo');
-
+    handleSubmit(event:any){
+        this.props.addTodo(this.state.todo.description)
+        let initialTodo = {todo: {description: ''}} as AddTodoState;
         event.preventDefault();
-        this.setState({...this.initialTodo})
+        this.setState({...initialTodo})
         
     }
 
@@ -45,7 +52,7 @@ class AddTodo extends Component{
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="description">Description:</label>
-                        <textarea className="form-control" rows="5" id="description" name="description" value={todo.description} onChange={this.handleChange} required></textarea>
+                        <textarea className="form-control" rows={5} id="description" name="description" value={todo.description} onChange={this.handleChange} required></textarea>
                     </div>
                     <div className="form-group">
                         <button className="btn btn-primary">Add</button>
