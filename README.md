@@ -11,7 +11,3 @@
 1) PropTypes for component props
 
 2) Typescript integration
-
-3) HOC Genarator
-
-
