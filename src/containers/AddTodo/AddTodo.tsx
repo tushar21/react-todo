@@ -2,6 +2,12 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import {ADD_TODO} from '../../redux/actions/todos'
 import Todo from '../../types/todo'
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    getLatLng,
+  } from 'react-places-autocomplete';
+import axios from 'axios';
+
 
 const mapDispatchToProps = (dispatch:any) => {
     return {
@@ -10,12 +16,15 @@ const mapDispatchToProps = (dispatch:any) => {
 }
 
 interface AddTodoState {
-    todo: Todo
+    todo: Todo,
+    address:string
 }
 
 interface AddTodoProps{
     addTodo? : (todo:any)=> void
 }
+
+interface placeHandlerFn{ getInputProps: any, suggestions:any, getSuggestionItemProps:any, loading:any }
 
 class AddTodo extends React.Component<AddTodoProps, AddTodoState>{
     constructor(props:AddTodoProps){
@@ -23,7 +32,7 @@ class AddTodo extends React.Component<AddTodoProps, AddTodoState>{
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         const initialTodo  = { todo : { description: ''}  } as AddTodoState
-        this.state = initialTodo;
+        this.state = { ...initialTodo, address : ''};
     }
 
     handleChange(event:any){
@@ -46,20 +55,18 @@ class AddTodo extends React.Component<AddTodoProps, AddTodoState>{
     }
 
     render(){
-        const {todo} = this.state
-        return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="description">Description:</label>
-                        <textarea className="form-control" rows={5} id="description" name="description" value={todo.description} onChange={this.handleChange} required></textarea>
-                    </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary">Add</button>
-                    </div>
-                </form>
-            </div>
-        )
+        const {todo} = this.state;
+        return (<div>             
+            <form onSubmit={this.handleSubmit}>
+                <div className="form-group">
+                    <label htmlFor="description">Description:</label>
+                    <textarea className="form-control" rows={5} id="description" name="description" value={todo.description} onChange={this.handleChange} required></textarea>
+                </div>
+                <div className="form-group">
+                    <button className="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>);
     }
 }
 

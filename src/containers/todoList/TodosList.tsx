@@ -3,10 +3,14 @@ import { connect } from 'react-redux'
 import { Todos } from '../../components/Todos'
 import {Link} from 'react-router-dom';
 import Todo from '../../types/todo';
+import {REMOVE_TODO} from '../../redux/actions/todos'
+import {TodoDetails} from '../../containers/Todo'
+import TodoType from '../../types/todo';
 
 
 interface TodoProps {
-    todos:Array<Todo>;
+    todos:Array<Todo>,
+    removeTodo? : (id:number)=>void,
 }
 
 
@@ -22,7 +26,11 @@ class TodosList extends React.Component<TodoProps>{
             <div>
                 <h4>Todo Listing</h4>
                 <Link to={'/todos/add'}>Add Todo</Link>
-                <Todos todos={todos}/>
+                {   
+                    todos.map((todo: TodoType)=>{
+                        return <TodoDetails key={todo.id} todo={todo} removeTodo={()=>this.props.removeTodo(todo.id)}/>
+                    })
+                }
             </div>
         )
     }
@@ -32,4 +40,11 @@ const mapStateToProps = (state:any):TodoProps => {
     return {todos: state.todos}
 }
 
-export default connect(mapStateToProps)(TodosList)
+const matchDispatchToProps = (dispatch:any) =>{
+    return {
+        removeTodo : (id:number) => dispatch(REMOVE_TODO(id))
+    }
+}
+
+
+export default connect(mapStateToProps, matchDispatchToProps)(TodosList)
