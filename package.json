@@ -2,7 +2,7 @@
   "name": "demo-ui",
   "version": "1.0.0",
   "description": "Demo UI APP",
-  "main": "index.tsx",
+  "main": "index",
   "scripts": {
     "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production"
@@ -13,17 +13,20 @@
     "@babel/core": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
+    "@types/node": "^11.13.4",
     "@types/react-redux": "^7.0.6",
     "@types/react-router-dom": "^4.3.1",
     "awesome-typescript-loader": "^5.2.1",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.1",
     "ts-loader": "^5.3.3",
     "typescript": "^3.4.1",
     "webpack": "^4.29.6",
@@ -31,10 +34,14 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
+    "google-places-web": "^0.2.0",
+    "react-places-autocomplete": "^7.2.1",
     "react-redux": "^6.0.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2"
   },
   "compilerOptions": {
     "moduleResolution": "node"

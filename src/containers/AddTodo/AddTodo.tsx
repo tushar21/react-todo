@@ -2,11 +2,6 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import {ADD_TODO} from '../../redux/actions/todos'
 import Todo from '../../types/todo'
-import PlacesAutocomplete, {
-    geocodeByAddress,
-    getLatLng,
-  } from 'react-places-autocomplete';
-import axios from 'axios';
 
 
 const mapDispatchToProps = (dispatch:any) => {
@@ -24,7 +19,6 @@ interface AddTodoProps{
     addTodo? : (todo:any)=> void
 }
 
-interface placeHandlerFn{ getInputProps: any, suggestions:any, getSuggestionItemProps:any, loading:any }
 
 class AddTodo extends React.Component<AddTodoProps, AddTodoState>{
     constructor(props:AddTodoProps){
@@ -35,7 +29,7 @@ class AddTodo extends React.Component<AddTodoProps, AddTodoState>{
         this.state = { ...initialTodo, address : ''};
     }
 
-    handleChange(event:any){
+    handleChange(event:any){        
         const target = event.target
         const name = target.name
         this.setState({
@@ -71,4 +65,4 @@ class AddTodo extends React.Component<AddTodoProps, AddTodoState>{
 }
 
 
-export default connect(null, mapDispatchToProps)(AddTodo)
+export default connect(mapDispatchToProps)(AddTodo)

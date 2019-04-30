@@ -8,7 +8,7 @@ const todos = (state=intialTodos, action:any) =>{
         console.log(action, 'In the todo reducers')
             return [
                 ...state,
-                 {
+                {
                     id: action.id,
                     description: action.description
                 }

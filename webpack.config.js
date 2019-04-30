@@ -1,7 +1,11 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
-module.exports = {
+const webpack = require('webpack');
+
+module.exports = env => { 
+
+  return {
   entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -36,10 +40,13 @@ module.exports = {
       { 
         test: /\.(ts|tsx)?$/, 
         use: {
-                    loader: 'ts-loader'
-            }
-              
+          loader: 'ts-loader'
+        }              
       },
+      {
+        test:/\.css$/,
+        use:['style-loader','css-loader']
+      }
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       /* { enforce: "pre", test: /\.js$/, loader: "source-map-loader" } */
     ]
@@ -48,6 +55,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
+    }),
+
+    // check if the defineplugin working or not. Have not used this variable anywhere in app though 
+    new webpack.DefinePlugin({
+      __SERVER__: JSON.stringify('https://dev.example.com')
     })
   ]
+}
 };
