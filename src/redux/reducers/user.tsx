@@ -10,8 +10,13 @@ const initialState = {
 const users = (state = initialState, action:any) =>{
     switch (action.type) {
         case CONSTANTS.USER_SIGNUP: 
-            console.log('User signup reducer called')
-            return {...state, loading: true}        
+            return {...state, loading: true} 
+        
+        case CONSTANTS.USER_LOGIN: 
+            return {...state, loading: true} 
+            
+        case CONSTANTS.USER_LOGIN_SUCCESS: 
+            return {...state, loading: false}        
 
         case CONSTANTS.USER_SIGNUP_SUCCESS: 
             return {...state, user: action.payload, loading: false}        

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import User from 'types/user'
 import { USER_SIGNUP } from '../../redux/actions/user'
-import { SignupForm } from '../../containers/Signup';
+import { SignupForm } from '../../containers/SignupForm';
 
 interface SignProps {
     userSignup: (payload: any) => void;

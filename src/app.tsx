@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch } from "react-router-dom"
 import TodosList from './containers/todoList/TodosList'
 import { AddTodo } from './containers/AddTodo'
 import { ErrorBoundary } from './containers/ErrorBoundadry'
-import { LoginPage } from './containers/Login'
+import { LoginPage } from './Pages/Login'
 
 import { SignupPage } from './Pages/Signup'
 import LoginLayout from './layouts/LoginLayout/LoginLayoutRoutes'

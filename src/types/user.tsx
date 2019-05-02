@@ -5,3 +5,8 @@ export default interface User{
     username: string;   
     password? : string;
 }
+
+export interface LoginFields{
+    email: string;
+    password: string
+}

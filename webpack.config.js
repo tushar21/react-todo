@@ -18,9 +18,10 @@ module.exports = env => {
   /* devtool: "source-map", */
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json", ".css"]
   },
   module: {
+    
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -45,7 +46,7 @@ module.exports = env => {
       },
       {
         test:/\.css$/,
-        use:['style-loader','css-loader']
+        loader:'style-loader!css-loader'
       }
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
       /* { enforce: "pre", test: /\.js$/, loader: "source-map-loader" } */

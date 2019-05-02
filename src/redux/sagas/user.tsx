@@ -13,6 +13,17 @@ function* userSignup(action: ActionType) {
     alert('Signup success');
 }
 
-export default function* signupActionWatcher() {
+export function* signupActionWatcher() {
     yield takeLatest('USER_SIGNUP', userSignup)
+}
+
+
+function* userLogin(action: any) {
+    const json = yield Login(action.payload);
+    yield put({ type: 'USER_LOGIN_SUCCESS', payload: json.data })
+    alert('Login success');
+}
+
+export function* loginActionWatcher() {
+    yield takeLatest('USER_LOGIN', userLogin)
 }

@@ -6,7 +6,7 @@ interface SpinnerProps{
     loading: boolean;
 }
 
-class SpinnerLoader extends React.Component<SpinnerProps>{
+export class SpinnerLoader extends React.Component<SpinnerProps>{
 
     constructor(props:SpinnerProps){
         super(props);
@@ -15,8 +15,7 @@ class SpinnerLoader extends React.Component<SpinnerProps>{
     render(){
         const {loading, children} = this.props;
         return ( 
-            <div>{loading ? <div className="d-flex justify-content-center" id="spinner"> <div className="spinner-border" role="status"> <span className="sr-only">Loading...</span>
-            </div> </div> : children}</div>            
+            <div>{loading ? <div className="d-flex justify-content-center" id="spinner"><div className='spinner' role="status"><span className="sr-only">Loading...</span></div></div> : children}</div>            
         )
     }    
 }
