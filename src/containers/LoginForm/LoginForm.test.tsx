@@ -11,7 +11,7 @@ describe('Login form', ()=>{
         // Define spies
         const MockEvent  = { preventDefault: ()=>{}, login: ()=>{}}
         const spy = jest.spyOn(MockEvent, 'preventDefault');
-        const LoginSpy = jest.spyOn(MockEvent, 'signup');
+        const LoginSpy = jest.spyOn(MockEvent, 'login');
         
         // Create component
         const component = shallow(<LoginForm onLogin={MockEvent.login}/>)

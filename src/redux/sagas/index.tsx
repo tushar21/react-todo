@@ -1,10 +1,9 @@
 import { put, takeLatest, all } from 'redux-saga/effects'
-import {signupActionWatcher, loginActionWatcher} from './user'
+import UserSagas from './user'
 
 export default function* rootSaga() {
     yield all([
-        signupActionWatcher(),
-        loginActionWatcher()
+        UserSagas()
     ]);
  }
  

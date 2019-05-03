@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-class UserLoginPage extends React.Component<LoginProps> {
+export class UserLoginPage extends React.Component<LoginProps> {
 
     constructor(props: LoginProps){
         super(props);

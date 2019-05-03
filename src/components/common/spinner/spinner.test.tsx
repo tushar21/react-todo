@@ -18,7 +18,6 @@ test('loader should be disabled and content will be displayed', () => {
     const content = 'Hello';
     const component = create(<SpinnerLoader loading={false}>{content}</SpinnerLoader>)    
     let tree = component.toJSON()
-    console.log(tree, 'tree')
     expect(tree.type).toEqual('div')
     expect(tree.children[0]).toEqual(content)
     expect(tree).toMatchSnapshot();    

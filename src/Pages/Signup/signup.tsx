@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch: any) => {
     }
 }
 
-class UserSignupPage extends React.Component<SignProps> {
+export class UserSignupPage extends React.Component<SignProps> {
 
     constructor(props: SignProps){
         super(props);

@@ -1,24 +1,23 @@
-import User from '../../types/user';
-import CONSTANTS from '../constants';
+import{ACTIONS} from '../../helpers/constants';
 
 const initialState = {
-    user : {} ,
+    loggedinuser : false ,
     loading: false
 }
 
 
 const users = (state = initialState, action:any) =>{
     switch (action.type) {
-        case CONSTANTS.USER_SIGNUP: 
+        case ACTIONS.USER_SIGNUP: 
             return {...state, loading: true} 
         
-        case CONSTANTS.USER_LOGIN: 
+        case ACTIONS.USER_LOGIN: 
             return {...state, loading: true} 
             
-        case CONSTANTS.USER_LOGIN_SUCCESS: 
-            return {...state, loading: false}        
+        case ACTIONS.USER_LOGIN_SUCCESS: 
+            return {...state, loggedinuser: action.payload, loading: false}        
 
-        case CONSTANTS.USER_SIGNUP_SUCCESS: 
+        case ACTIONS.USER_SIGNUP_SUCCESS: 
             return {...state, user: action.payload, loading: false}        
         default:
             return state       
