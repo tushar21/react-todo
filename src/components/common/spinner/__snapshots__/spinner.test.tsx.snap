@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default loader should be disabled 1`] = `
+<div>
+  <div
+    className="d-flex justify-content-center"
+    id="spinner"
+  >
+    <div
+      className="spinner"
+      role="status"
+    >
+      <span
+        className="sr-only"
+      >
+        Loading...
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`loader should be disabled and content will be displayed 1`] = `
+<div>
+  Hello
+</div>
+`;
