@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --hot --mode development",
     "build": "webpack --mode production",
-    "test": "jest --coverage",
+    "test": "jest",
     "test-watch": "jest --watchAll"
   },
   "author": "Tushar",
@@ -49,6 +49,7 @@
   "dependencies": {
     "@types/react": "^16.8.10",
     "@types/react-dom": "^16.8.3",
+    "connected-react-router": "^6.4.0",
     "react-places-autocomplete": "^7.2.1",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
