@@ -37,7 +37,7 @@ export default class UserLoginForm extends React.Component<LoginFormProps, Login
             <form onSubmit={this.handleLogin}>
 
                 <div className="form-group">
-                    <input type="email" className="form-control" placeholder="User email"  value={user.email} onChange={(e)=>this.handleChange(e, 'email')}/>
+                    <input type="email" className="form-control" placeholder="User email address"  value={user.email} onChange={(e)=>this.handleChange(e, 'email')}/>
                 </div>
 
                 <div className="form-group">
