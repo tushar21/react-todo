@@ -22,7 +22,7 @@ export class SpinnerLoader extends React.Component<SpinnerProps>{
 
 
 const mapStateToProps = (state:any)=>{
-    return {loading: state.users.loading}
+    return {loading: state.common.loading}
 }
 export default connect(mapStateToProps, null)(SpinnerLoader)
 

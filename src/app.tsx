@@ -10,8 +10,9 @@ import { SignupPage } from './Pages/Signup'
 import LoginLayout from './layouts/LoginLayout/LoginLayoutRoutes'
 import DashboardLayout from './layouts/AppLayout/DashboardLayoutRoutes'
 import { SpinnerLoader } from './components/common/spinner'
-import {history} from "./redux/store"
-import {ROLES} from './helpers/constants';
+import { history } from "./redux/store"
+import { ROLES } from './helpers/constants'
+import { AppNotification } from './components/common/Notification'
 
 export default class App extends React.Component {
 
@@ -19,15 +20,16 @@ export default class App extends React.Component {
         return (
             <ConnectedRouter history={history}>
                 <ErrorBoundary>
-                        <SpinnerLoader/>
-                        <Switch>
-                            <DashboardLayout path='/boards' allowedRoles={[ROLES.ADMIN, ROLES.AUTHENTICATED]} component={TodosList} />
-                            <DashboardLayout path='/boards/add' component={AddTodo} />
+                    <SpinnerLoader />
+                    <AppNotification />
+                    <Switch>
+                        <DashboardLayout path='/boards' allowedRoles={[ROLES.ADMIN, ROLES.AUTHENTICATED]} component={TodosList} />
+                        <DashboardLayout path='/boards/add' component={AddTodo} />
 
-                            <LoginLayout path='/login' component={LoginPage} />
-                            <LoginLayout path='/signup' component={SignupPage} />
-                        </Switch>
-                    
+                        <LoginLayout path='/login' component={LoginPage} />
+                        <LoginLayout path='/signup' component={SignupPage} />
+                    </Switch>
+
                 </ErrorBoundary>
             </ConnectedRouter>
         )
